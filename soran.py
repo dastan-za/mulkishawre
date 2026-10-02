@@ -146,7 +146,7 @@ BASE_TEMPLATE = """
     <div class="container">
         <div class="main-menu">
             <div class="menu-title">
-                <img src="/static/logo1.pmg" onerror="this.style.display='none'" class="menu-logo" alt="لۆگۆ">
+                <img src="/static/logo1.png" onerror="this.style.display='none'" class="menu-logo" alt="لۆگۆ">
                 نوسینگەی موڵکی شاورێ
             </div>
             <a href="/dashboard"><span>🏠</span> داشبۆرد</a>
@@ -327,7 +327,7 @@ def dashboard():
             <h1>داشبۆردی بەڕێوەبردن</h1>
             <p>بەخێربێیت بۆ نوسینگەی موڵکی شاورێ، لێرەوە دەتوانیت بە خێرایی و ئاسانی کۆنترۆڵی سەرجەم گرێبەست، حیسابات و موڵکەکان بکەیت.</p>
         </div>
-        <img src="/static/logo1.pmg" onerror="this.style.display='none'" alt="لۆگۆ" class="welcome-logo">
+        <img src="/static/logo1.png" onerror="this.style.display='none'" alt="لۆگۆ" class="welcome-logo">
     </div>
     
     <!-- کارتەکانی ئامار -->
@@ -1433,7 +1433,7 @@ def print_a4(id):
             
             <!-- واتەرمارکی سەد لە سەد جێگیر (لۆگۆی پشتەوە) -->
             <div class="watermark-container">
-                <img src="/static/logo1.pmg" onerror="this.style.display='none'" alt="واتەرمارک">
+                <img src="/static/logo1.png" onerror="this.style.display='none'" alt="واتەرمارک">
             </div>
             
             <div class="header-flex">
@@ -1453,7 +1453,7 @@ def print_a4(id):
                     <span>(ڕانیە گەڕەکی شارەوانی)</span>
                 </div>
                 <div class="logo-wrap">
-                    <img src="/static/logo1.pmg" onerror="this.style.display='none'" class="logo-img" alt="لۆگۆی نوسینگە">
+                    <img src="/static/logo1.png" onerror="this.style.display='none'" class="logo-img" alt="لۆگۆی نوسینگە">
                 </div>
             </div>
             
