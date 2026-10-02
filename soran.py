@@ -68,7 +68,7 @@ BASE_TEMPLATE = """
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>نوسینگەی شەعبان</title>
+    <title>نوسینگەی موڵکی شاورێ</title>
     <script>
         const themes = {
             'crimson': { primary: '#e11d48', bg: '#1c050a', card: '#2e0a13', border: '#4c1020' }, 
@@ -147,7 +147,7 @@ BASE_TEMPLATE = """
         <div class="main-menu">
             <div class="menu-title">
                 <img src="/static/logo.png" onerror="this.style.display='none'" class="menu-logo" alt="لۆگۆ">
-                نوسینگەی شەعبان
+                نوسینگەی موڵکی شاورێ
             </div>
             <a href="/dashboard"><span>🏠</span> داشبۆرد</a>
             <a href="/properties_available"><span>🏢</span> موڵکی بەردەست</a>
@@ -251,7 +251,7 @@ def login():
             <div class="color-circle" style="background:#cbd5e1;" onclick="applyTheme('diamond')" title="ڕەشی ئەڵماسی"></div>
         </div>
         <div class="login-box">
-            <h2 style="color:var(--main-color); font-weight:900; text-shadow: 0 0 10px rgba(0,0,0,0.5); font-size:24px;">🏢 نوسینگەی شەعبان</h2>
+            <h2 style="color:var(--main-color); font-weight:900; text-shadow: 0 0 10px rgba(0,0,0,0.5); font-size:24px;">🏢 نوسینگەی موڵکی شاورێ</h2>
             <form method="POST">
                 <input type="text" name="username" placeholder="ناوی بەکارهێنەر" required autocomplete="off">
                 <input type="password" name="password" placeholder="وشەی نهێنی" required>
@@ -325,7 +325,7 @@ def dashboard():
     <div class="welcome-banner">
         <div class="welcome-text">
             <h1>داشبۆردی بەڕێوەبردن</h1>
-            <p>بەخێربێیت بۆ نوسینگەی شەعبان، لێرەوە دەتوانیت بە خێرایی و ئاسانی کۆنترۆڵی سەرجەم گرێبەست، حیسابات و موڵکەکان بکەیت.</p>
+            <p>بەخێربێیت بۆ نوسینگەی موڵکی شاورێ، لێرەوە دەتوانیت بە خێرایی و ئاسانی کۆنترۆڵی سەرجەم گرێبەست، حیسابات و موڵکەکان بکەیت.</p>
         </div>
         <img src="/static/logo.png" onerror="this.style.display='none'" alt="لۆگۆ" class="welcome-logo">
     </div>
@@ -1448,7 +1448,7 @@ def print_a4(id):
                 </div>
 
                 <div class="title-center">
-                    <h1>نوسینگەی شەعبان</h1>
+                    <h1>نوسینگەی موڵکی شاورێ</h1>
                     <h3>بۆ کڕین و فرۆشتنی موڵک</h3>
                     <span>(ڕانیە گەڕەکی شارەوانی)</span>
                 </div>
@@ -1492,7 +1492,7 @@ def print_a4(id):
             <div class="signatures-row">
                 <div class="sig-col">
                     <div>مۆر و واژۆی نوسینگە</div>
-                    <div class="sig-name" style="color:#721c24;">نوسینگەی شەعبان</div>
+                    <div class="sig-name" style="color:#721c24;">نوسینگەی موڵکی شاورێ</div>
                 </div>
                 <div class="sig-col">
                     <div>لایەنی دووەم (کڕیار)</div>
@@ -1512,7 +1512,7 @@ def print_a4(id):
                 </div>
             </div>
             
-            <div class="footer-text">ئەم گرێبەستە لە ڕێگەی سیستەمی ئەلیکترۆنی نوسینگەی شەعبانەوە دروست کراوە.</div>
+            <div class="footer-text">ئەم گرێبەستە لە ڕێگەی سیستەمی ئەلیکترۆنی نوسینگەی موڵکی شاورێەوە دروست کراوە.</div>
         </div>
         
         <div style="text-align:center; margin-top: 20px;" id="print-btn">
