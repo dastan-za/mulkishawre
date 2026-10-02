@@ -1030,7 +1030,7 @@ def expenses():
                         <td style="font-size:12px; color:#94a3b8;">{{ n }}</td>
                         <td style="font-weight:900; color:#ef4444;" dir="ltr">{{ "{:,.0f}".format(r[2]) }}</td>
                         <td class="action-flex">
-                            <a href="/edit_expense/{{ r[0] }}" class="action-btn btn-warning" title="دەستکاری">✏️</a>
+                            <a href="/edit_expense/{{ r[0] }}" class="action-btn btn-warning" title="دەستکاری">✏️️</a>
                             <form method="POST" action="/delete_expense/{{ r[0] }}" style="margin:0;">
                                 <button type="submit" class="action-btn btn-danger" onclick="return confirm('بسڕێتەوە؟');" title="سڕینەوە">🗑</button>
                             </form>
@@ -1250,7 +1250,7 @@ def users():
                         <td style="color:#ef4444;" dir="ltr">{{ r[2] }}</td>
                         <td>{{ r[3] }}</td>
                         <td class="action-flex">
-                            <a href="/edit_user/{{ r[0] }}" class="action-btn btn-warning" title="دەستکاری">✏️️</a>
+                            <a href="/edit_user/{{ r[0] }}" class="action-btn btn-warning" title="دەستکاری">✏</a>
                             {% if r[1] != 'admin' %}
                             <form method="POST" action="/delete_user/{{ r[0] }}" style="margin:0;">
                                 <button type="submit" class="action-btn btn-danger" onclick="return confirm('بە یەکجاری بسڕێتەوە؟');" title="سڕینەوە">🗑️</button>
@@ -1396,29 +1396,29 @@ def print_a4(id):
             .title-center span {{ font-size: 11px; color: #666; }}
             
             .logo-wrap {{ width: 33%; display: flex; justify-content: flex-end; align-items: center; }}
-            .logo-img {{ max-width: 160px; height: auto; object-fit: contain; }}
+            .logo-img {{ max-width: 170px; height: auto; object-fit: contain; }}
             
-            .meta-row {{ display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }}
+            .meta-row {{ display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }}
             .meta-box {{ border: 1px solid #ccc; padding: 5px 15px; border-radius: 8px; font-weight: bold; }}
             .meta-center {{ border: 1px solid #ccc; padding: 5px 30px; border-radius: 8px; font-weight: bold; color: #721c24; background: #fdfdfd; }}
             
-            .parties-row {{ display: flex; justify-content: space-between; margin-bottom: 25px; border: 1px solid #eee; padding: 12px; border-radius: 8px; }}
+            .parties-row {{ display: flex; justify-content: space-between; margin-bottom: 30px; border: 1px solid #eee; padding: 15px; border-radius: 8px; }}
             .party {{ text-align: center; width: 45%; }}
             .party-title {{ color: #ef4444; font-weight: bold; margin-bottom: 10px; font-size: 11px; }}
             .party-phone {{ font-size: 11px; color: #555; }}
             
-            ol {{ padding-right: 20px; text-align: justify; margin-bottom: 25px; }}
-            li {{ margin-bottom: 8px; }}
+            ol {{ padding-right: 20px; text-align: justify; margin-bottom: 30px; }}
+            li {{ margin-bottom: 10px; }}
             
             .highlight {{ font-weight: bold; text-decoration: underline; color: #ef4444; }}
             
-            .note-red {{ color: #ef4444; text-align: center; font-weight: bold; margin: 25px 0; font-size: 12px; }}
+            .note-red {{ color: #ef4444; text-align: center; font-weight: bold; margin: 30px 0; font-size: 12px; }}
             
-            .signatures-row {{ display: flex; justify-content: space-between; text-align: center; font-weight: bold; font-size: 11px; margin-top: 40px; border-top: 2px dotted #ccc; padding-top: 15px; }}
-            .sig-col {{ display: flex; flex-direction: column; gap: 15px; width: 18%; }}
+            .signatures-row {{ display: flex; justify-content: space-between; text-align: center; font-weight: bold; font-size: 11px; margin-top: 50px; border-top: 2px dotted #ccc; padding-top: 20px; }}
+            .sig-col {{ display: flex; flex-direction: column; gap: 20px; width: 18%; }}
             .sig-name {{ color: #555; }}
             
-            .footer-text {{ text-align: center; font-size: 10px; color: #999; margin-top: 30px; }}
+            .footer-text {{ text-align: center; font-size: 10px; color: #999; margin-top: 40px; }}
             
             @media print {{
                 @page {{ margin: 0.5cm; }} /* ڕێگری دەکات لە دروستبوونی پەڕەی بەتاڵ */
