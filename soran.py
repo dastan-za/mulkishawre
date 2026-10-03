@@ -4,8 +4,8 @@ from sqlalchemy import create_engine, text
 import pandas as pd
 from datetime import datetime
 
-app = Flask(__name__)
-app.secret_key = "shahban_super_secret_key"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+app = Flask(__name__, static_folder=os.path.join(BASE_DIR, 'static'))app.secret_key = "shahban_super_secret_key"
 
 # بەستنەوە بە داتابەیسی ڕێندەر
 MYSQL_URL = "mysql+pymysql://root:HITVDFaMFehpQFmWrZlnaTKtavNtBZyw@sakura.proxy.rlwy.net:31707/shahban"
@@ -301,8 +301,7 @@ def dashboard():
             <h1>داشبۆردی بەڕێوەبردن</h1>
             <p>بەخێربێیت بۆ نوسینگەی موڵکی شاورێ، لێرەوە دەتوانیت بە خێرایی و ئاسانی کۆنترۆڵی سەرجەم گرێبەست، حیسابات و موڵکەکان بکەیت.</p>
         </div>
-        <img src="/static/logo1.png" onerror="this.style.display='none'" alt="لۆگۆ" class="welcome-logo">
-    </div>
+<img src="{{ url_for('static', filename='logo1.png') }}" alt="لۆگۆ" class="welcome-logo">    </div>
     
     <!-- کارتەکانی ئامار -->
     <div class="stat-grid">
