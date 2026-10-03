@@ -1407,8 +1407,7 @@ def print_a4(id):
             
             <!-- واتەرمارکی سەد لە سەد جێگیر (لۆگۆی پشتەوە) -->
             <div class="watermark-container">
-                <img src="/static/logo1.png" onerror="this.style.display='none'" alt="واتەرمارک">
-            </div>
+                <img src="{url_for('static', filename='logo1.png')}" alt="واتەرمارک">
             
             <div class="header-flex">
                 <!-- دیزاینی نوێی ژمارەی تەلەفۆن بەبێ تایتڵ و لەگەڵ ئایکۆن -->
@@ -1427,7 +1426,7 @@ def print_a4(id):
                     <span>(ڕانیە گەڕەکی شارەوانی)</span>
                 </div>
                 <div class="logo-wrap">
-                    <img src="/static/logo1.png" onerror="this.style.display='none'" class="logo-img" alt="لۆگۆی نوسینگە">
+                    <img src="{url_for('static', filename='logo1.png')}" class="logo-img" alt="لۆگۆی نوسینگە">
                 </div>
             </div>
             
