@@ -4,9 +4,7 @@ from sqlalchemy import create_engine, text
 import pandas as pd
 from datetime import datetime
 
-# ڕێکخستنی شوێنی فۆڵدەری static بە شێوەیەکی فەرمی بۆ سێرڤەرەکان
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-app = Flask(__name__, static_folder=os.path.join(BASE_DIR, 'static'), static_url_path='/static')
+app = Flask(__name__)
 app.secret_key = "shahban_super_secret_key"
 
 # بەستنەوە بە داتابەیسی ڕێندەر
@@ -70,7 +68,7 @@ BASE_TEMPLATE = """
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>نوسینگەی موڵکی شاورێ</title>
+    <title>نوسینگەی شەعبان</title>
     <script>
         const themes = {
             'crimson': { primary: '#e11d48', bg: '#1c050a', card: '#2e0a13', border: '#4c1020' }, 
@@ -148,9 +146,8 @@ BASE_TEMPLATE = """
     <div class="container">
         <div class="main-menu">
             <div class="menu-title">
-                <!-- ڕاستکردنەوەی لۆگۆی سەرەوەی مێنیو -->
-                <img src="{{ url_for('static', filename='logo1.png') }}" class="menu-logo" alt="لۆگۆ">
-                نوسینگەی موڵکی شاورێ
+                <img src="/static/logo.png" onerror="this.style.display='none'" class="menu-logo" alt="لۆگۆ">
+                نوسینگەی شەعبان
             </div>
             <a href="/dashboard"><span>🏠</span> داشبۆرد</a>
             <a href="/properties_available"><span>🏢</span> موڵکی بەردەست</a>
@@ -254,7 +251,7 @@ def login():
             <div class="color-circle" style="background:#cbd5e1;" onclick="applyTheme('diamond')" title="ڕەشی ئەڵماسی"></div>
         </div>
         <div class="login-box">
-            <h2 style="color:var(--main-color); font-weight:900; text-shadow: 0 0 10px rgba(0,0,0,0.5); font-size:24px;">🏢 نوسینگەی موڵکی شاورێ</h2>
+            <h2 style="color:var(--main-color); font-weight:900; text-shadow: 0 0 10px rgba(0,0,0,0.5); font-size:24px;">🏢 نوسینگەی شەعبان</h2>
             <form method="POST">
                 <input type="text" name="username" placeholder="ناوی بەکارهێنەر" required autocomplete="off">
                 <input type="password" name="password" placeholder="وشەی نهێنی" required>
@@ -328,10 +325,9 @@ def dashboard():
     <div class="welcome-banner">
         <div class="welcome-text">
             <h1>داشبۆردی بەڕێوەبردن</h1>
-            <p>بەخێربێیت بۆ نوسینگەی موڵکی شاورێ، لێرەوە دەتوانیت بە خێرایی و ئاسانی کۆنترۆڵی سەرجەم گرێبەست، حیسابات و موڵکەکان بکەیت.</p>
+            <p>بەخێربێیت بۆ نوسینگەی شەعبان، لێرەوە دەتوانیت بە خێرایی و ئاسانی کۆنترۆڵی سەرجەم گرێبەست، حیسابات و موڵکەکان بکەیت.</p>
         </div>
-        <!-- ڕاستکردنەوەی لۆگۆی داشبۆرد -->
-        <img src="{{ url_for('static', filename='logo1.png') }}" alt="لۆگۆ" class="welcome-logo">
+        <img src="/static/logo.png" onerror="this.style.display='none'" alt="لۆگۆ" class="welcome-logo">
     </div>
     
     <!-- کارتەکانی ئامار -->
@@ -1034,7 +1030,7 @@ def expenses():
                         <td style="font-size:12px; color:#94a3b8;">{{ n }}</td>
                         <td style="font-weight:900; color:#ef4444;" dir="ltr">{{ "{:,.0f}".format(r[2]) }}</td>
                         <td class="action-flex">
-                            <a href="/edit_expense/{{ r[0] }}" class="action-btn btn-warning" title="دەستکاری">✏</a>
+                            <a href="/edit_expense/{{ r[0] }}" class="action-btn btn-warning" title="دەستکاری">✏️</a>
                             <form method="POST" action="/delete_expense/{{ r[0] }}" style="margin:0;">
                                 <button type="submit" class="action-btn btn-danger" onclick="return confirm('بسڕێتەوە؟');" title="سڕینەوە">🗑</button>
                             </form>
@@ -1183,7 +1179,7 @@ def edit_safe(id):
     
     content = f"""
     <div class="card" style="max-width:500px; margin:auto;">
-        <h3 style="color:var(--main-color); text-align:center;">✏️️ دەستکاریکردنی تۆماری قاسە</h3>
+        <h3 style="color:var(--main-color); text-align:center;">✏️ دەستکاریکردنی تۆماری قاسە</h3>
         <form method="POST">
             <label>بەروار:</label><input type="date" name="trans_date" value="{row['trans_date']}" required>
             
@@ -1254,7 +1250,7 @@ def users():
                         <td style="color:#ef4444;" dir="ltr">{{ r[2] }}</td>
                         <td>{{ r[3] }}</td>
                         <td class="action-flex">
-                            <a href="/edit_user/{{ r[0] }}" class="action-btn btn-warning" title="دەستکاری">✏</a>
+                            <a href="/edit_user/{{ r[0] }}" class="action-btn btn-warning" title="دەستکاری">✏️️</a>
                             {% if r[1] != 'admin' %}
                             <form method="POST" action="/delete_user/{{ r[0] }}" style="margin:0;">
                                 <button type="submit" class="action-btn btn-danger" onclick="return confirm('بە یەکجاری بسڕێتەوە؟');" title="سڕینەوە">🗑️</button>
@@ -1362,6 +1358,7 @@ def print_a4(id):
             body {{ font-family: 'Noto Kufi Arabic', sans-serif; background: #e2e8f0; margin: 0; padding: 20px; color: #000; font-size: 13px; line-height: 2.1; }}
             .a4-page {{ width: 21cm; min-height: 29.7cm; padding: 0.5cm 1cm; margin: 0 auto; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); box-sizing: border-box; position: relative; z-index: 1; }}
             
+            /* ڕێکخستنی واتەرمارک بۆ کاتی پرێنتکردن */
             .watermark-container {{
                 position: absolute;
                 top: 0; left: 0; right: 0; bottom: 0;
@@ -1371,12 +1368,27 @@ def print_a4(id):
                 z-index: -1;
                 opacity: 0.15; 
             }}
-            .watermark-container img {{ width: 70%; max-width: 600px; }}
+            .watermark-container img {{
+                width: 70%;
+                max-width: 600px;
+            }}
             
             .header-flex {{ display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #721c24; padding-bottom: 12px; margin-bottom: 20px; }}
             
+            /* دیزاینی نوێی بەشی تەلەفۆنەکان کە ئایکۆنی تەلەفۆنی تیایە */
             .phones-wrapper {{ width: 33%; display: flex; justify-content: flex-start; align-items: center; }}
-            .phones-box {{ color: #1e3a8a; font-weight: bold; font-size: 13px; line-height: 1.8; border: 2px solid #3b82f6; background-color: #eff6ff; border-radius: 12px; padding: 10px 15px; text-align: left; display: inline-block; }}
+            .phones-box {{
+                color: #1e3a8a;
+                font-weight: bold;
+                font-size: 13px;
+                line-height: 1.8;
+                border: 2px solid #3b82f6;
+                background-color: #eff6ff;
+                border-radius: 12px;
+                padding: 10px 15px;
+                text-align: left;
+                display: inline-block;
+            }}
             
             .title-center {{ text-align: center; color: #721c24; width: 34%; }}
             .title-center h1 {{ margin: 0; font-size: 26px; font-weight: 900; }}
@@ -1384,29 +1396,32 @@ def print_a4(id):
             .title-center span {{ font-size: 11px; color: #666; }}
             
             .logo-wrap {{ width: 33%; display: flex; justify-content: flex-end; align-items: center; }}
-            .logo-img {{ max-width: 170px; height: auto; object-fit: contain; }}
+            .logo-img {{ max-width: 160px; height: auto; object-fit: contain; }}
             
-            .meta-row {{ display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }}
+            .meta-row {{ display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }}
             .meta-box {{ border: 1px solid #ccc; padding: 5px 15px; border-radius: 8px; font-weight: bold; }}
             .meta-center {{ border: 1px solid #ccc; padding: 5px 30px; border-radius: 8px; font-weight: bold; color: #721c24; background: #fdfdfd; }}
             
-            .parties-row {{ display: flex; justify-content: space-between; margin-bottom: 30px; border: 1px solid #eee; padding: 15px; border-radius: 8px; }}
+            .parties-row {{ display: flex; justify-content: space-between; margin-bottom: 25px; border: 1px solid #eee; padding: 12px; border-radius: 8px; }}
             .party {{ text-align: center; width: 45%; }}
             .party-title {{ color: #ef4444; font-weight: bold; margin-bottom: 10px; font-size: 11px; }}
             .party-phone {{ font-size: 11px; color: #555; }}
             
-            ol {{ padding-right: 20px; text-align: justify; margin-bottom: 30px; }}
-            li {{ margin-bottom: 10px; }}
-            .highlight {{ font-weight: bold; text-decoration: underline; color: #ef4444; }}
-            .note-red {{ color: #ef4444; text-align: center; font-weight: bold; margin: 30px 0; font-size: 12px; }}
+            ol {{ padding-right: 20px; text-align: justify; margin-bottom: 25px; }}
+            li {{ margin-bottom: 8px; }}
             
-            .signatures-row {{ display: flex; justify-content: space-between; text-align: center; font-weight: bold; font-size: 11px; margin-top: 50px; border-top: 2px dotted #ccc; padding-top: 20px; }}
-            .sig-col {{ display: flex; flex-direction: column; gap: 20px; width: 18%; }}
+            .highlight {{ font-weight: bold; text-decoration: underline; color: #ef4444; }}
+            
+            .note-red {{ color: #ef4444; text-align: center; font-weight: bold; margin: 25px 0; font-size: 12px; }}
+            
+            .signatures-row {{ display: flex; justify-content: space-between; text-align: center; font-weight: bold; font-size: 11px; margin-top: 40px; border-top: 2px dotted #ccc; padding-top: 15px; }}
+            .sig-col {{ display: flex; flex-direction: column; gap: 15px; width: 18%; }}
             .sig-name {{ color: #555; }}
-            .footer-text {{ text-align: center; font-size: 10px; color: #999; margin-top: 40px; }}
+            
+            .footer-text {{ text-align: center; font-size: 10px; color: #999; margin-top: 30px; }}
             
             @media print {{
-                @page {{ margin: 0.5cm; }} 
+                @page {{ margin: 0.5cm; }} /* ڕێگری دەکات لە دروستبوونی پەڕەی بەتاڵ */
                 body {{ background: white; padding: 0; margin: 0; }}
                 .a4-page {{ box-shadow: none; border: none; margin: 0; padding: 0.5cm 1cm; width: 100%; height: auto; page-break-after: avoid; page-break-inside: avoid; }}
                 #print-btn {{ display: none; }}
@@ -1416,27 +1431,29 @@ def print_a4(id):
     <body>
         <div class="a4-page">
             
+            <!-- واتەرمارکی سەد لە سەد جێگیر (لۆگۆی پشتەوە) -->
             <div class="watermark-container">
-                <img src="{url_for('static', filename='logo1.png')}" alt="واتەرمارک">
-            </div> 
+                <img src="/static/logo.png" onerror="this.style.display='none'" alt="واتەرمارک">
+            </div>
             
             <div class="header-flex">
+                <!-- دیزاینی نوێی ژمارەی تەلەفۆن بەبێ تایتڵ و لەگەڵ ئایکۆن -->
                 <div class="phones-wrapper">
                     <div class="phones-box" dir="ltr">
-                        📞 0770 222 7171<br>
-                        📞 0750 222 7171<br>
+                        📞 0770 073 7171<br>
+                        📞 0750 073 7171<br>
                         📞 0750 184 4609<br>
                         📞 0770 102 8801
                     </div>
                 </div>
 
                 <div class="title-center">
-                    <h1>نوسینگەی موڵکی شاورێ</h1>
+                    <h1>نوسینگەی شەعبان</h1>
                     <h3>بۆ کڕین و فرۆشتنی موڵک</h3>
                     <span>(ڕانیە گەڕەکی شارەوانی)</span>
                 </div>
                 <div class="logo-wrap">
-                    <img src="{url_for('static', filename='logo1.png')}" class="logo-img" alt="لۆگۆی نوسینگە">
+                    <img src="/static/logo.png" onerror="this.style.display='none'" class="logo-img" alt="لۆگۆی نوسینگە">
                 </div>
             </div>
             
@@ -1475,7 +1492,7 @@ def print_a4(id):
             <div class="signatures-row">
                 <div class="sig-col">
                     <div>مۆر و واژۆی نوسینگە</div>
-                    <div class="sig-name" style="color:#721c24;">نوسینگەی موڵکی شاورێ</div>
+                    <div class="sig-name" style="color:#721c24;">نوسینگەی شەعبان</div>
                 </div>
                 <div class="sig-col">
                     <div>لایەنی دووەم (کڕیار)</div>
@@ -1495,7 +1512,7 @@ def print_a4(id):
                 </div>
             </div>
             
-            <div class="footer-text">ئەم گرێبەستە لە ڕێگەی سیستەمی ئەلیکترۆنی نوسینگەی موڵکی شاورێەوە دروست کراوە.</div>
+            <div class="footer-text">ئەم گرێبەستە لە ڕێگەی سیستەمی ئەلیکترۆنی نوسینگەی شەعبانەوە دروست کراوە.</div>
         </div>
         
         <div style="text-align:center; margin-top: 20px;" id="print-btn">
