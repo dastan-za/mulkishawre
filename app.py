@@ -75,7 +75,7 @@ BASE_TEMPLATE = """
             'emerald': { primary: '#10b981', bg: '#022c22', card: '#064e3b', border: '#065f46' }, 
             'gold': { primary: '#f59e0b', bg: '#0f172a', card: '#1e293b', border: '#334155' },    
             'diamond': { primary: '#cbd5e1', bg: '#050505', card: '#121212', border: '#262626' },
-            'purple': { primary: '#a855f7', bg: '#170f23', card: '#2e1065', border: '#4c1d95' }  // ڕەنگی بنەوشەیی زیادکرا
+            'purple': { primary: '#a855f7', bg: '#170f23', card: '#2e1065', border: '#4c1d95' }
         };
         function applyTheme(name) {
             const t = themes[name] || themes['gold'];
@@ -217,7 +217,7 @@ def login():
                 'emerald': { primary: '#10b981', bg: '#022c22', card: '#064e3b', border: '#065f46' }, 
                 'gold': { primary: '#f59e0b', bg: '#0f172a', card: '#1e293b', border: '#334155' },    
                 'diamond': { primary: '#cbd5e1', bg: '#050505', card: '#121212', border: '#262626' },
-                'purple': { primary: '#a855f7', bg: '#170f23', card: '#2e1065', border: '#4c1d95' } // زیادکرا
+                'purple': { primary: '#a855f7', bg: '#170f23', card: '#2e1065', border: '#4c1d95' }
             };
             function applyTheme(name) {
                 const t = themes[name] || themes['gold'];
@@ -252,7 +252,6 @@ def login():
             <div class="color-circle" style="background:#10b981;" onclick="applyTheme('emerald')" title="سەوز"></div>
             <div class="color-circle" style="background:#f59e0b;" onclick="applyTheme('gold')" title="گۆڵد"></div>
             <div class="color-circle" style="background:#cbd5e1;" onclick="applyTheme('diamond')" title="ڕەشی ئەڵماسی"></div>
-            <!-- دوگمەی ڕەنگی بنەوشەیی زیادکرا -->
             <div class="color-circle" style="background:#a855f7;" onclick="applyTheme('purple')" title="بنەوشەیی"></div>
         </div>
         <div class="login-box">
@@ -802,7 +801,6 @@ def archive():
                     <td style="color:#10b981;">{{ r[7] }}</td>
                     <td dir="ltr" style="font-weight:900; color:var(--main-color);">{{ "{:,.0f}".format(r[4]) }} <span>{{ r[5] }}</span></td>
                     <td class="action-flex">
-                        <!-- دوگمەی چاپکردن بە زمانی کوردی و ئینگلیزی -->
                         <a href="/print/{{ r[0] }}?lang=ku" class="btn-print" style="padding: 6px 12px; font-size:14px;" target="_blank">🖨️ کوردی</a>
                         <a href="/print/{{ r[0] }}?lang=en" class="btn-print" style="padding: 6px 12px; font-size:14px; background:#8b5cf6;" target="_blank">🖨️ EN</a>
                         <a href="/edit_contract/{{ r[0] }}" class="action-btn btn-warning" title="دەستکاری تەواوەتی">✏️</a>
@@ -1432,15 +1430,18 @@ def print_a4(id):
             <li>بە ڕەزامەندی هەردوو لایەن ئەم بڕگانەی لە بەڵگەنامەکەدا هاتووە ئیمزا کرا.</li>
         """
 
-    # ڕێکخستنی شوێنی فۆنت و دیزاین بەپێی زمانەکە LTR یان RTL
+    # ڕێکخستنی شوێنی فۆنت و دیزاین بەپێی زمانەکە پێش ئەوەی بیخەینە ناو f-string بۆ ڕێگریکردن لە SyntaxError
     flex_dir = 'row-reverse' if lang == 'en' else 'row'
     logo_justify = 'flex-start' if lang == 'en' else 'flex-end'
     phone_justify = 'flex-end' if lang == 'en' else 'flex-start'
     pad_dir = 'padding-left' if lang == 'en' else 'padding-right'
+    border_side = 'left' if lang == 'en' else 'right'
+    party_font_size = '13px' if lang == 'en' else '11px'
+    lang_dir = 'en' if lang == 'en' else 'ku'
 
     html = f"""
     <!DOCTYPE html>
-    <html lang="{ 'en' if lang == 'en' else 'ku' }" dir="{ld['dir']}">
+    <html lang="{lang_dir}" dir="{ld['dir']}">
     <head>
         <meta charset="UTF-8">
         <title>{ld['title']}</title>
@@ -1471,7 +1472,7 @@ def print_a4(id):
             
             .parties-row {{ display: flex; justify-content: space-between; margin-bottom: 25px; border: 1px solid #eee; padding: 12px; border-radius: 8px; flex-direction: {flex_dir}; }}
             .party {{ text-align: center; width: 45%; }}
-            .party-title {{ color: #ef4444; font-weight: bold; margin-bottom: 10px; font-size: { '13px' if lang == 'en' else '11px' }; }}
+            .party-title {{ color: #ef4444; font-weight: bold; margin-bottom: 10px; font-size: {party_font_size}; }}
             .party-phone {{ font-size: 11px; color: #555; direction: ltr; display: inline-block; }}
             
             ol {{ {pad_dir}: 20px; text-align: justify; margin-bottom: 25px; }}
@@ -1532,7 +1533,7 @@ def print_a4(id):
                     <div class="party-title">{ld['buyer_title']}</div>
                     <div>{ld['mobile_lbl']} <span class="party-phone">{c_data['buyer_phone'] or '-'}</span></div>
                 </div>
-                <div class="party" style="border-{% if lang == 'en' %}left{% else %}right{% endif %}: 1px solid #ddd;">
+                <div class="party" style="border-{border_side}: 1px solid #ddd;">
                     <div class="party-title">{ld['seller_title']}</div>
                     <div>{ld['mobile_lbl']} <span class="party-phone">{c_data['seller_phone'] or '-'}</span></div>
                 </div>
