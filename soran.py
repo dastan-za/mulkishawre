@@ -114,39 +114,13 @@ BASE_TEMPLATE = """
         label { font-weight: bold; color: var(--main-color); display: block; margin-top: 15px; margin-bottom: 5px; font-size: 14px; }
         input, select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background-color: var(--bg-dark); color: #f8fafc; font-family: 'Noto Kufi Arabic'; font-weight: bold; box-sizing: border-box; transition: 0.3s; font-size: 14px; }
         input:focus, select:focus { outline: none; border-color: var(--main-color); box-shadow: 0 0 8px rgba(0,0,0,0.4); }
-        .btn-primary { background-color: var(--main-color); color: var(--bg-dark); width: 100%; padding: 14px; border: none; border-radius: 8px; font-weight: 900; font-size: 16px; font-family: 'Noto Kufi Arabic'; cursor: pointer; margin-top: 25px; transition: 0.3s; display: block; text-align: center; text-decoration: none; box-sizing: border-box; }
-        .btn-primary:hover { opacity: 0.8; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .btn-primary { background-color: var(--main-color); color: var(--bg-
         
-        .action-flex { display: flex; gap: 8px; align-items: center; justify-content: center; }
-        .action-btn { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 6px; cursor: pointer; border: none; font-size: 16px; text-decoration: none; transition: 0.2s; }
-        .action-btn:hover { transform: scale(1.1); }
-        .btn-warning { background-color: #f59e0b; color: white; }
-        .btn-danger { background-color: #ef4444; color: white; }
-        .btn-print { background-color: #3b82f6; color: white; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-weight:bold; font-family: 'Noto Kufi Arabic'; text-decoration: none; display:inline-block; }
-        
-        .table-responsive { overflow-x: auto; width: 100%; border-radius: 8px; }
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; text-align: right; min-width: 650px; }
-        th, td { padding: 12px 10px; border-bottom: 1px solid var(--border-color); font-size: 14px; }
-        th { background-color: var(--bg-dark); color: var(--main-color); font-weight: 900; white-space: nowrap; }
-        tr:hover { background-color: var(--border-color); }
-        .section-title { color: var(--main-color); font-size: 18px; font-weight: 900; margin-top: 20px; margin-bottom: 15px; border-bottom: 2px solid var(--border-color); padding-bottom: 5px; }
-
-        @media (max-width: 768px) {
-            .grid-2, .grid-3, .grid-4, .grid-30-70, .grid-35-65 { grid-template-columns: 1fr; gap: 10px; }
-            .container { padding: 10px; }
-            .card { padding: 15px; }
-            .main-menu a { min-width: 45%; font-size: 13px; padding: 10px; }
-            .menu-title { font-size: 20px; }
-            .menu-logo { height: 35px; }
-            input, select { padding: 10px; font-size: 13px; }
-        }
-    </style>
-</head>
 <body>
     <div class="container">
         <div class="main-menu">
             <div class="menu-title">
-                <img src="/static/logo1.png" onerror="this.style.display='none'" class="menu-logo" alt="لۆگۆ">
+                <img src="{{ url_for('static', filename='logo1.png') }}" class="menu-logo" alt="لۆگۆ">
                 نوسینگەی موڵکی شاورێ
             </div>
             <a href="/dashboard"><span>🏠</span> داشبۆرد</a>
