@@ -1450,7 +1450,7 @@ def print_a4(id):
                 <div class="title-center">
                     <h1>موڵکی شاورێ</h1>
                     <h3>بۆ کڕین و فرۆشتنی موڵک</h3>
-                    <span>(سەرووی ترافیکی نەورۆز، جوتسایدی هۆڵە داخراوەکە، تەنیشت مارکێتی شەقام ناونیشان: ڕانیە شەقامی پێشەوا)</span>
+                    <span>( ڕانیە شەقامی پێشەوا           ، جوتسایدی هۆڵە داخراوەکە، تەنیشت مارکێتی شەقام ناونیشان: )</span>
                 </div>
                 <div class="logo-wrap">
                     <img src="/static/logo1.png" onerror="this.style.display='none'" class="logo-img" alt="لۆگۆی نوسینگە">
