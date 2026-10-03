@@ -1,6 +1,4 @@
-Flask
-pandas
-SQLAlchemy
-PyMySQL
-cryptography
+flask
+sqlalchemy
+pymysql
 gunicorn
